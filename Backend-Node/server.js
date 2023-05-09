@@ -47,12 +47,13 @@ app.use('/api/v1/dashboard', authenticationMiddleware, taskRouter);
 app.use(NotFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-//port
-const port = process.env.PORT || 3000;
+
 
 const start = async () => {
   try {
-    await connectDB(process.env.MONGO_URI);
+    //port
+    const port = process.env.PORT || 3000;
+    connectDB(process.env.MONGO_URI);
     console.log('connected successfully');
     app.listen(port, () => console.log('app listening on port 3000'));
   } catch (error) {
