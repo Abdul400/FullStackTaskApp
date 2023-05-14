@@ -24,7 +24,7 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 
 //security middleware
-app.set('trust proxy', 1);
+app.set('trust proxy', true);
 app.use(
   rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
