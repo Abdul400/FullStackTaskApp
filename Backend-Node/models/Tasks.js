@@ -4,13 +4,13 @@ const Task = new mongoose.Schema(
     title: {
       type: String,
       required: [true, 'Please Provide Task Title'],
-      minlength: 10,
+      minlength: 0,
       maxlength: 50,
     },
     description: {
       type: String,
       required: [true, 'Please Provide Task Description'],
-      minlength: 20,
+      minlength: 0,
       maxlength: 1000,
     },
     isDone: {
