@@ -125,12 +125,16 @@ const Add: React.FC<Props> = ({ addNewTodo, setShowAdd, setData }) => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         };
-        await axios.post('http://localhost:3000/api/v1/dashboard', finalData, {
-          headers,
-        });
+        await axios.post(
+          'https://full-stack-task-app.vercel.app/api/v1/dashboard',
+          finalData,
+          {
+            headers,
+          }
+        );
 
         let response = await axios.get(
-          'http://localhost:3000/api/v1/dashboard',
+          'https://full-stack-task-app.vercel.app/api/v1/dashboard',
           { headers }
         );
         setData(response.data);

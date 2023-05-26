@@ -96,7 +96,7 @@ const SignUp = () => {
     }
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/v1/auth/signup',
+        'https://full-stack-task-app.vercel.app/api/v1/auth/signup',
         signUpData
       );
       if (response.data.success) {

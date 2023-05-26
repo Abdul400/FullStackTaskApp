@@ -129,13 +129,16 @@ const Edit: React.FC<Props> = ({
         Authorization: `Bearer ${token}`,
       };
       await axios.patch(
-        `http://localhost:3000/api/v1/dashboard/${id}`,
+        `https://full-stack-task-app.vercel.app/api/v1/dashboard/${id}`,
         finalData,
         { headers }
       );
-      let response = await axios.get('http://localhost:3000/api/v1/dashboard', {
-        headers,
-      });
+      let response = await axios.get(
+        'https://full-stack-task-app.vercel.app/api/v1/dashboard',
+        {
+          headers,
+        }
+      );
       setData(response.data);
       setShowEdit(false);
       toast.success('Item updated successfully', {

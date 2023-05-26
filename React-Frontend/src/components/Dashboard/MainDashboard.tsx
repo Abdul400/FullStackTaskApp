@@ -61,7 +61,7 @@ const MainDashboard: React.FC = () => {
       };
       async function getItem() {
         let response = await axios.get(
-          `http://localhost:3000/api/v1/dashboard/${id}`,
+          `https://full-stack-task-app.vercel.app/api/v1/dashboard/${id}`,
           {
             headers,
           }
@@ -89,7 +89,7 @@ const MainDashboard: React.FC = () => {
           Authorization: `Bearer ${token}`,
         };
         let response = await axios.get(
-          'http://localhost:3000/api/v1/dashboard',
+          'https://full-stack-task-app.vercel.app/api/v1/dashboard',
           {
             headers,
           }
@@ -110,13 +110,16 @@ const MainDashboard: React.FC = () => {
         Authorization: `Bearer ${token}`,
       };
       await axios.patch(
-        `http://localhost:3000/api/v1/dashboard`,
+        `https://full-stack-task-app.vercel.app/api/v1/dashboard`,
         { hideAllDoneTasks: hideTodos },
         { headers }
       );
-      let response = await axios.get('http://localhost:3000/api/v1/dashboard', {
-        headers,
-      });
+      let response = await axios.get(
+        'https://full-stack-task-app.vercel.app/api/v1/dashboard',
+        {
+          headers,
+        }
+      );
 
       setData(response.data);
     };

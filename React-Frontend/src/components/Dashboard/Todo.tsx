@@ -72,12 +72,18 @@ const Todo: React.FC<Props> = ({
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       };
-      await axios.delete(`http://localhost:3000/api/v1/dashboard/${id}`, {
-        headers,
-      });
-      let response = await axios.get('http://localhost:3000/api/v1/dashboard', {
-        headers,
-      });
+      await axios.delete(
+        `https://full-stack-task-app.vercel.app/api/v1/dashboard/${id}`,
+        {
+          headers,
+        }
+      );
+      let response = await axios.get(
+        'https://full-stack-task-app.vercel.app/api/v1/dashboard',
+        {
+          headers,
+        }
+      );
 
       setData(response.data);
       setShowMenu(false);
@@ -114,15 +120,18 @@ const Todo: React.FC<Props> = ({
         isDone: true,
       };
       await axios.patch(
-        `http://localhost:3000/api/v1/dashboard/${id}`,
+        `https://full-stack-task-app.vercel.app/api/v1/dashboard/${id}`,
         finalData,
         {
           headers,
         }
       );
-      let response = await axios.get('http://localhost:3000/api/v1/dashboard', {
-        headers,
-      });
+      let response = await axios.get(
+        'https://full-stack-task-app.vercel.app/api/v1/dashboard',
+        {
+          headers,
+        }
+      );
 
       setData(response.data);
     }
@@ -142,15 +151,18 @@ const Todo: React.FC<Props> = ({
         isDone: false,
       };
       await axios.patch(
-        `http://localhost:3000/api/v1/dashboard/${id}`,
+        `https://full-stack-task-app.vercel.app/api/v1/dashboard/${id}`,
         finalData,
         {
           headers,
         }
       );
-      let response = await axios.get('http://localhost:3000/api/v1/dashboard', {
-        headers,
-      });
+      let response = await axios.get(
+        'https://full-stack-task-app.vercel.app/api/v1/dashboard',
+        {
+          headers,
+        }
+      );
 
       setData(response.data);
     }

@@ -17,12 +17,19 @@ type myTask = {
   hideAllDoneTasks: boolean;
 };
 
+// type myMainData = {
+//   success: boolean;
+//   tasks: myTask[];
+//   nbHits: number;
+//   user: string;
+//   hideAllDoneTasks: boolean;
+// };
 type myMainData = {
   success: boolean;
   tasks: myTask[];
   nbHits: number;
   user: string;
-  hideAllDoneTasks: boolean;
+  areAllTodosHidden: boolean;
 };
 type myData = {
   success: boolean;
@@ -35,8 +42,8 @@ type Props = {
   openEdit: (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>) => void;
   hideTodos: boolean;
   setId: React.Dispatch<React.SetStateAction<string>>;
-  data: myData;
-  setData: React.Dispatch<React.SetStateAction<myData | null>>;
+  data: myMainData;
+  setData: React.Dispatch<React.SetStateAction<myMainData | null>>;
 };
 
 const Todos: React.FC<Props> = ({

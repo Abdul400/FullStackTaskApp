@@ -53,7 +53,7 @@ const Navigation: React.FC<myProps> = ({
           Authorization: `Bearer ${token}`,
         };
         let response = await axios.get(
-          'http://localhost:3000/api/v1/dashboard',
+          'https://full-stack-task-app.vercel.app/api/v1/dashboard',
           {
             headers,
           }
@@ -77,7 +77,7 @@ const Navigation: React.FC<myProps> = ({
         Authorization: `Bearer ${token}`,
       };
       let response = await axios.get(
-        'http://localhost:3000/api/v1/dashboard/search',
+        'https://full-stack-task-app.vercel.app/api/v1/dashboard/search',
         {
           params: {
             q: mySelection,
