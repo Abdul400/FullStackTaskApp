@@ -40,8 +40,7 @@ const SignUp = () => {
         progress: undefined,
         theme: 'colored',
       });
-    }
-    if (email === '') {
+    } else if (email === '') {
       toast.error('please enter email field', {
         position: 'top-right',
         autoClose: 5000,
@@ -52,8 +51,7 @@ const SignUp = () => {
         progress: undefined,
         theme: 'colored',
       });
-    }
-    if (password === '') {
+    } else if (password === '') {
       toast.error('please enter password field', {
         position: 'top-right',
         autoClose: 5000,
@@ -64,8 +62,7 @@ const SignUp = () => {
         progress: undefined,
         theme: 'colored',
       });
-    }
-    if (confirm === '') {
+    } else if (confirm === '') {
       toast.error('please enter confirm password field', {
         position: 'top-right',
         autoClose: 5000,
@@ -76,8 +73,7 @@ const SignUp = () => {
         progress: undefined,
         theme: 'colored',
       });
-    }
-    if (password !== confirm) {
+    } else if (password !== confirm) {
       toast.error('passwords must be the same', {
         position: 'top-right',
         autoClose: 5000,
@@ -89,21 +85,42 @@ const SignUp = () => {
         theme: 'colored',
       });
     }
-    interface ApiResponse {
-      token: string;
-      username: string;
-      success: boolean;
-    }
-    try {
-      const response = await axios.post(
-        'https://full-stack-task-app.vercel.app/api/v1/auth/signup',
-        signUpData
-      );
-      if (response.data.success) {
-        //set token in local storage
-        localStorage.setItem('userToken', response.data.token);
-        localStorage.setItem('user', response.data.user);
-        toast.success('signed up successfully!', {
+    // interface ApiResponse {
+    //   token: string;
+    //   username: string;
+    //   success: boolean;
+    // }
+    else {
+      try {
+        const response = await axios.post(
+          'https://full-stack-task-app.vercel.app/api/v1/auth/signup',
+          signUpData
+        );
+        if (response.data.success) {
+          //set token in local storage
+          localStorage.setItem('userToken', response.data.token);
+          localStorage.setItem('user', response.data.user);
+          toast.success('signed up successfully!', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'colored',
+          });
+          setTimeout(() => {
+            navigate('/dashboard');
+          }, 2000);
+        }
+      } catch (error: any) {
+        let {
+          response: {
+            data: { msg: errorMessage },
+          },
+        } = error;
+        toast.error(errorMessage, {
           position: 'top-right',
           autoClose: 5000,
           hideProgressBar: false,
@@ -113,26 +130,7 @@ const SignUp = () => {
           progress: undefined,
           theme: 'colored',
         });
-        setTimeout(() => {
-          navigate('/dashboard');
-        }, 2000);
       }
-    } catch (error: any) {
-      let {
-        response: {
-          data: { msg: errorMessage },
-        },
-      } = error;
-      toast.error(errorMessage, {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'colored',
-      });
     }
   };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
